@@ -39,6 +39,8 @@ from .schemas import (
     ComparisonResponse,
 )
 from .pdf_extractor import ExtractionResult
+from .confidence_calibrator import ConfidenceCalibrator
+from .comp_engine import CompAdjustmentEngine
 
 
 # ---------------------------------------------------------------------------
@@ -256,6 +258,13 @@ class LLMExtractor:
         # Post-validate numeric fields
         fields = _post_validate(fields)
 
+        # Run confidence calibration and comp analysis
+        calibrator = ConfidenceCalibrator()
+        calibration_report = calibrator.calibrate(fields)
+
+        comp_engine = CompAdjustmentEngine()
+        comp_report = comp_engine.analyze(fields)
+
         elapsed = time.time() - start_time
 
         return ExtractionResponse(
@@ -266,6 +275,8 @@ class LLMExtractor:
             fields=fields,
             confidence_summary=self._build_confidence_summary(fields),
             processing_time_seconds=round(elapsed, 3),
+            calibration=calibration_report.to_dict(),
+            comp_analysis=comp_report.to_dict(),
         )
 
     def _build_confidence_summary(self, fields: AppraisalFields) -> dict[str, int]:

@@ -180,6 +180,8 @@ class ExtractionResponse(BaseModel):
     fields: AppraisalFields
     confidence_summary: dict[str, int]
     processing_time_seconds: float
+    calibration: Optional[dict] = None
+    comp_analysis: Optional[dict] = None
 
 
 class ComparisonField(BaseModel):
