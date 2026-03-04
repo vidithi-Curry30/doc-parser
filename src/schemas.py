@@ -207,3 +207,173 @@ class ComparisonResponse(BaseModel):
     agreement_rate: float   # 0.0 to 1.0
     comparisons: list[ComparisonField]
     summary: str            # LLM-generated narrative summary of differences
+
+
+# ---------------------------------------------------------------------------
+# Form 1003 — Uniform Residential Loan Application schemas
+# ---------------------------------------------------------------------------
+
+class LoanFields(BaseModel):
+    """
+    Structured schema for mortgage loan application fields (Form 1003).
+
+    Fields drawn from the standard Fannie Mae/Freddie Mac Uniform Residential
+    Loan Application (URLA) used for conventional, FHA, and VA loans.
+    """
+
+    # --- Loan Information ---
+    loan_amount: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Total loan amount requested in USD."
+    )
+    loan_purpose: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Purpose of loan: Purchase, Refinance, Construction, etc."
+    )
+    loan_type: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Loan program type: Conventional, FHA, VA, USDA."
+    )
+    amortization_type: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Fixed Rate, ARM, GPM, or other amortization type."
+    )
+    loan_term_months: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Loan repayment term in months (e.g. 360 for 30-year)."
+    )
+    interest_rate: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Note interest rate as a percentage."
+    )
+
+    # --- Property ---
+    property_address: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Full street address of the subject property."
+    )
+    property_type: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Single Family, Condominium, PUD, Cooperative, etc."
+    )
+    occupancy_type: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Primary Residence, Secondary Residence, or Investment Property."
+    )
+    purchase_price: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Contract purchase price of the property in USD."
+    )
+    down_payment: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Down payment amount in USD."
+    )
+    ltv_ratio: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Loan-to-value ratio as a percentage."
+    )
+
+    # --- Borrower ---
+    borrower_name: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Full legal name of primary borrower."
+    )
+    borrower_dob: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Date of birth of primary borrower."
+    )
+    borrower_ssn_last4: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Last 4 digits of borrower's Social Security Number."
+    )
+    borrower_phone: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Primary borrower's contact phone number."
+    )
+    borrower_email: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Primary borrower's email address."
+    )
+    co_borrower_name: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Full legal name of co-borrower, if any."
+    )
+
+    # --- Employment & Income ---
+    employer_name: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Name of borrower's current employer."
+    )
+    employment_years: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Years at current employer."
+    )
+    gross_monthly_income: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Total monthly income before taxes in USD."
+    )
+    base_monthly_income: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Base salary/wages monthly income in USD."
+    )
+
+    # --- Assets & Liabilities ---
+    checking_savings_balance: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Total checking and savings account balances in USD."
+    )
+    monthly_debt_payments: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Total recurring monthly debt obligations in USD."
+    )
+    dti_ratio: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Debt-to-income ratio as a percentage."
+    )
+
+    # --- Credit ---
+    credit_score: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Borrower's credit score (FICO or equivalent)."
+    )
+
+    # --- Lender ---
+    lender_name: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Name of the lending institution."
+    )
+    loan_officer_name: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Name of the loan officer handling the application."
+    )
+    application_date: ExtractedField = Field(
+        default_factory=ExtractedField,
+        description="Date the loan application was submitted."
+    )
+
+    def to_flat_dict(self) -> dict[str, Optional[str]]:
+        """Flatten to field_name -> value for easy display/export."""
+        return {
+            fname: getattr(self, fname).value
+            for fname in LoanFields.model_fields
+        }
+
+    def high_confidence_fields(self) -> dict[str, str]:
+        """Return only fields with HIGH confidence as a flat dict."""
+        return {
+            fname: getattr(self, fname).value
+            for fname in LoanFields.model_fields
+            if getattr(self, fname).confidence == FieldConfidence.HIGH
+            and getattr(self, fname).value
+        }
+
+
+class LoanExtractionResponse(BaseModel):
+    """Top-level response for a Form 1003 loan application extraction."""
+    file_name: str
+    page_count: int
+    extraction_strategy: str
+    total_chars_extracted: int
+    fields: LoanFields
+    confidence_summary: dict[str, int]
+    processing_time_seconds: float
