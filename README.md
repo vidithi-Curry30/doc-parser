@@ -2,7 +2,7 @@
 
 An AI-powered pipeline that extracts structured data from residential property appraisal reports (URAR / UAD 3.6 format) and enables field-by-field comparison across multiple documents.
 
-Built as a demonstration of combining classical document processing with modern LLM-based structured extraction — directly applicable to real estate tech products like [ValueMate](https://valuemate.ai).
+Built as a demonstration of combining classical document processing with modern LLM-based structured extraction
 
 ---
 
