@@ -31,7 +31,8 @@ from rich.panel import Panel
 
 from .pdf_extractor import extract_pdf, ExtractionError
 from .llm_extractor import LLMExtractor
-from .schemas import FieldConfidence
+from .loan_extractor import LoanExtractor
+from .schemas import FieldConfidence, LoanFields
 
 load_dotenv()
 console = Console()
@@ -44,6 +45,15 @@ def _get_extractor() -> LLMExtractor:
         sys.exit(1)
     model = os.getenv("MODEL_NAME", "gpt-4o")
     return LLMExtractor(api_key=api_key, model=model)
+
+
+def _get_loan_extractor() -> LoanExtractor:
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key or api_key == "your_openai_api_key_here":
+        console.print("[red]Error: OPENAI_API_KEY not set. Copy .env.example to .env and add your key.[/red]")
+        sys.exit(1)
+    model = os.getenv("MODEL_NAME", "gpt-4o")
+    return LoanExtractor(api_key=api_key, model=model)
 
 
 CONFIDENCE_COLORS = {
@@ -227,6 +237,90 @@ def compare(pdf1_path: str, pdf2_path: str, output: str | None, discrepancies_on
     if output:
         out_path = Path(output)
         out_path.write_text(comparison.model_dump_json(indent=2))
+        console.print(f"\n[green]✓ Full JSON saved to: {out_path}[/green]")
+
+
+@cli.command()
+@click.argument("pdf_path", type=click.Path(exists=True, dir_okay=False))
+@click.option("--output", "-o", type=click.Path(), default=None,
+              help="Save full JSON output to this file path.")
+@click.option("--show-all", is_flag=True, default=False,
+              help="Show all fields including MISSING ones. Default: hide missing fields.")
+@click.option("--high-only", is_flag=True, default=False,
+              help="Show only HIGH confidence fields.")
+def loan(pdf_path: str, output: str | None, show_all: bool, high_only: bool):
+    """
+    Extract structured fields from a Form 1003 loan application PDF.
+
+    PDF_PATH: Path to the loan application PDF file.
+    """
+    path = Path(pdf_path)
+    extractor = _get_loan_extractor()
+
+    console.print(f"\n[bold]📋 Extracting loan application from:[/bold] {path.name}")
+
+    with console.status("[bold green]Extracting PDF text..."):
+        try:
+            pdf_result = extract_pdf(path)
+        except ExtractionError as e:
+            console.print(f"[red]PDF extraction failed: {e}[/red]")
+            sys.exit(1)
+
+    console.print(
+        f"  Strategy: [cyan]{pdf_result.strategy_used.value}[/cyan] | "
+        f"Pages: [cyan]{pdf_result.page_count}[/cyan] | "
+        f"Chars: [cyan]{pdf_result.total_chars:,}[/cyan]"
+    )
+
+    with console.status("[bold green]Running LLM extraction (Form 1003)..."):
+        result = extractor.extract_fields(pdf_result)
+
+    console.print(f"  Processing time: [cyan]{result.processing_time_seconds}s[/cyan]\n")
+
+    # Build results table
+    table = Table(
+        title=f"Loan Application Fields — {path.name}",
+        box=box.ROUNDED,
+        show_header=True,
+        header_style="bold magenta",
+    )
+    table.add_column("Field", style="bold", min_width=30)
+    table.add_column("Value", min_width=30)
+    table.add_column("Confidence", min_width=10, justify="center")
+    table.add_column("Reasoning", min_width=30, overflow="fold")
+
+    for fname in LoanFields.model_fields:
+        field_obj = getattr(result.fields, fname)
+
+        if high_only and field_obj.confidence != FieldConfidence.HIGH:
+            continue
+        if not show_all and field_obj.confidence == FieldConfidence.MISSING:
+            continue
+
+        color = CONFIDENCE_COLORS[field_obj.confidence]
+        table.add_row(
+            fname,
+            field_obj.value or "—",
+            f"[{color}]{field_obj.confidence.value}[/{color}]",
+            field_obj.reasoning or "",
+        )
+
+    console.print(table)
+
+    # Confidence summary
+    summary = result.confidence_summary
+    console.print(Panel(
+        f"[green]HIGH: {summary.get('high', 0)}[/green]  "
+        f"[yellow]MEDIUM: {summary.get('medium', 0)}[/yellow]  "
+        f"[orange3]LOW: {summary.get('low', 0)}[/orange3]  "
+        f"[red]MISSING: {summary.get('missing', 0)}[/red]",
+        title="Confidence Summary",
+        expand=False,
+    ))
+
+    if output:
+        out_path = Path(output)
+        out_path.write_text(result.model_dump_json(indent=2))
         console.print(f"\n[green]✓ Full JSON saved to: {out_path}[/green]")
 
 
