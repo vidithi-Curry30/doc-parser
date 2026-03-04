@@ -1,0 +1,546 @@
+{
+  "file_name": "sample_appraisal.pdf",
+  "page_count": 1,
+  "extraction_strategy": "pdfplumber",
+  "total_chars_extracted": 1731,
+  "fields": {
+    "property_address": {
+      "value": "742 Evergreen Terrace",
+      "confidence": "high",
+      "reasoning": "The property address is clearly stated under the 'SUBJECT PROPERTY' section.",
+      "source_snippet": "Property Address: 742 Evergreen Terrace"
+    },
+    "city": {
+      "value": "Springfield",
+      "confidence": "high",
+      "reasoning": "The city is clearly stated under the 'SUBJECT PROPERTY' section.",
+      "source_snippet": "City: Springfield"
+    },
+    "state": {
+      "value": null,
+      "confidence": "low",
+      "reasoning": "The state is not clearly visible due to a typo in the document.",
+      "source_snippet": "State: Zip CIoLde: 62704"
+    },
+    "zip_code": {
+      "value": "62704",
+      "confidence": "high",
+      "reasoning": "The zip code is clearly stated under the 'SUBJECT PROPERTY' section.",
+      "source_snippet": "Zip CIoLde: 62704"
+    },
+    "county": {
+      "value": "Sangamon",
+      "confidence": "high",
+      "reasoning": "The county is clearly stated under the 'SUBJECT PROPERTY' section.",
+      "source_snippet": "County: Sangamon"
+    },
+    "legal_description": {
+      "value": "Lot 12, Block 4, Evergreen Subdivision",
+      "confidence": "high",
+      "reasoning": "The legal description is clearly stated under the 'SUBJECT PROPERTY' section.",
+      "source_snippet": "Legal Description: Lot 12, Block 4, Evergreen Subdivision"
+    },
+    "assessors_parcel_number": {
+      "value": "14-25-376-012",
+      "confidence": "high",
+      "reasoning": "The assessor's parcel number is clearly stated under the 'SUBJECT PROPERTY' section.",
+      "source_snippet": "Assessor Parcel No: 14-25-376-012"
+    },
+    "appraised_value": {
+      "value": "$485,000",
+      "confidence": "high",
+      "reasoning": "The appraised value is clearly stated under the 'APPRAISAL DETAILS' section.",
+      "source_snippet": "Appraised Value: $485,000"
+    },
+    "effective_date_of_appraisal": {
+      "value": "January 15, 2024",
+      "confidence": "high",
+      "reasoning": "The effective date of appraisal is clearly stated under the 'APPRAISAL DETAILS' section.",
+      "source_snippet": "Effective Date: January 15, 2024"
+    },
+    "appraisal_purpose": {
+      "value": "Purchase",
+      "confidence": "high",
+      "reasoning": "The purpose of the appraisal is clearly stated under the 'APPRAISAL DETAILS' section.",
+      "source_snippet": "Purpose: Purchase"
+    },
+    "appraiser_name": {
+      "value": "Margaret J. Thompson, MAI",
+      "confidence": "high",
+      "reasoning": "The appraiser's name is clearly stated under the 'APPRAISAL DETAILS' section.",
+      "source_snippet": "Appraiser Name: Margaret J. Thompson, MAI"
+    },
+    "appraiser_license_number": {
+      "value": "IL-CG-004821",
+      "confidence": "high",
+      "reasoning": "The appraiser's license number is clearly stated under the 'APPRAISAL DETAILS' section.",
+      "source_snippet": "License Number: IL-CG-004821"
+    },
+    "lender_client": {
+      "value": "First National Bank of Springfield",
+      "confidence": "high",
+      "reasoning": "The lender/client is clearly stated under the 'APPRAISAL DETAILS' section.",
+      "source_snippet": "Lender / Client: First National Bank of Springfield"
+    },
+    "gross_living_area_sqft": {
+      "value": "2,150",
+      "confidence": "high",
+      "reasoning": "The gross living area is clearly stated under the 'PROPERTY CHARACTERISTICS' section.",
+      "source_snippet": "Above Grade GLA: 2,150 sq ft"
+    },
+    "lot_size": {
+      "value": "0.28 acres",
+      "confidence": "high",
+      "reasoning": "The lot size is clearly stated under the 'PROPERTY CHARACTERISTICS' section.",
+      "source_snippet": "Lot Size: 0.28 acres"
+    },
+    "year_built": {
+      "value": "1987",
+      "confidence": "high",
+      "reasoning": "The year built is clearly stated under the 'PROPERTY CHARACTERISTICS' section.",
+      "source_snippet": "Year Built: 1987"
+    },
+    "property_type": {
+      "value": "Single Family Residential",
+      "confidence": "high",
+      "reasoning": "The property type is clearly stated under the 'PROPERTY CHARACTERISTICS' section.",
+      "source_snippet": "Property Type: Single Family Residential"
+    },
+    "number_of_bedrooms": {
+      "value": null,
+      "confidence": "low",
+      "reasoning": "The number of bedrooms is not clearly stated due to a typo in the document.",
+      "source_snippet": "Bedrooms: Bathr4ooms: 2.5"
+    },
+    "number_of_bathrooms": {
+      "value": "2.5",
+      "confidence": "high",
+      "reasoning": "The number of bathrooms is clearly stated under the 'PROPERTY CHARACTERISTICS' section.",
+      "source_snippet": "Bathr4ooms: 2.5"
+    },
+    "number_of_stories": {
+      "value": "2",
+      "confidence": "high",
+      "reasoning": "The number of stories is clearly stated under the 'PROPERTY CHARACTERISTICS' section.",
+      "source_snippet": "Stories: 2"
+    },
+    "garage_capacity": {
+      "value": "2",
+      "confidence": "high",
+      "reasoning": "The garage capacity is clearly stated under the 'PROPERTY CHARACTERISTICS' section.",
+      "source_snippet": "Garage: 2 car attached"
+    },
+    "basement": {
+      "value": "Full, 800 sq ft, 60% finished",
+      "confidence": "high",
+      "reasoning": "The basement details are clearly stated under the 'PROPERTY CHARACTERISTICS' section.",
+      "source_snippet": "Basement: Full, 800 sq ft, 60% finished"
+    },
+    "condition_rating": {
+      "value": "C3",
+      "confidence": "high",
+      "reasoning": "The condition rating is clearly stated under the 'PROPERTY CHARACTERISTICS' section.",
+      "source_snippet": "Condition Rating: C3"
+    },
+    "quality_rating": {
+      "value": "Q4",
+      "confidence": "high",
+      "reasoning": "The quality rating is clearly stated under the 'PROPERTY CHARACTERISTICS' section.",
+      "source_snippet": "Quality Rating: Q4"
+    },
+    "neighborhood_name": {
+      "value": "Evergreen Heights",
+      "confidence": "high",
+      "reasoning": "The neighborhood name is clearly stated under the 'SUBJECT PROPERTY' section.",
+      "source_snippet": "Neighborhood Name: Evergreen Heights"
+    },
+    "market_trend": {
+      "value": "Increasing",
+      "confidence": "high",
+      "reasoning": "The market trend is clearly stated under the 'MARKET & NEIGHBORHOOD' section.",
+      "source_snippet": "Market Trend: Increasing"
+    },
+    "prior_sale_price": {
+      "value": "$341,000",
+      "confidence": "high",
+      "reasoning": "The prior sale price is clearly stated under the 'MARKET & NEIGHBORHOOD' section.",
+      "source_snippet": "Prior Sale Price: $341,000"
+    },
+    "prior_sale_date": {
+      "value": "March 12, 2018",
+      "confidence": "high",
+      "reasoning": "The prior sale date is clearly stated under the 'MARKET & NEIGHBORHOOD' section.",
+      "source_snippet": "Prior Sale Date: March 12, 2018"
+    },
+    "comp_1_address": {
+      "value": "818 Mulberry Lane, Springfield, IL 62704",
+      "confidence": "high",
+      "reasoning": "The address of the first comparable sale is clearly stated under the 'COMPARABLE SALES' section.",
+      "source_snippet": "1 818 Mulberry Lane, Springfield, IL 62704"
+    },
+    "comp_1_sale_price": {
+      "value": "$472,000",
+      "confidence": "high",
+      "reasoning": "The sale price of the first comparable sale is clearly stated under the 'COMPARABLE SALES' section.",
+      "source_snippet": "$472,000"
+    },
+    "comp_1_gla": {
+      "value": "2,080",
+      "confidence": "high",
+      "reasoning": "The GLA of the first comparable sale is clearly stated under the 'COMPARABLE SALES' section.",
+      "source_snippet": "2,080"
+    },
+    "comp_2_address": {
+      "value": "1204 Oak Street, Springfield, IL 62704",
+      "confidence": "high",
+      "reasoning": "The address of the second comparable sale is clearly stated under the 'COMPARABLE SALES' section.",
+      "source_snippet": "2 1204 Oak Street, Springfield, IL 62704"
+    },
+    "comp_2_sale_price": {
+      "value": "$498,500",
+      "confidence": "high",
+      "reasoning": "The sale price of the second comparable sale is clearly stated under the 'COMPARABLE SALES' section.",
+      "source_snippet": "$498,500"
+    },
+    "comp_2_gla": {
+      "value": "2,210",
+      "confidence": "high",
+      "reasoning": "The GLA of the second comparable sale is clearly stated under the 'COMPARABLE SALES' section.",
+      "source_snippet": "2,210"
+    },
+    "comp_3_address": {
+      "value": "55 Chestnut Ave, Springfield, IL 62703",
+      "confidence": "high",
+      "reasoning": "The address of the third comparable sale is clearly stated under the 'COMPARABLE SALES' section.",
+      "source_snippet": "3 55 Chestnut Ave, Springfield, IL 62703"
+    },
+    "comp_3_sale_price": {
+      "value": "$479,000",
+      "confidence": "high",
+      "reasoning": "The sale price of the third comparable sale is clearly stated under the 'COMPARABLE SALES' section.",
+      "source_snippet": "$479,000"
+    },
+    "comp_3_gla": {
+      "value": "2,100",
+      "confidence": "high",
+      "reasoning": "The GLA of the third comparable sale is clearly stated under the 'COMPARABLE SALES' section.",
+      "source_snippet": "2,100"
+    }
+  },
+  "confidence_summary": {
+    "high": 35,
+    "medium": 0,
+    "low": 2,
+    "missing": 0
+  },
+  "processing_time_seconds": 23.056,
+  "calibration": {
+    "reliability_score": 0.9091,
+    "error_count": 0,
+    "warning_count": 0,
+    "critical_fields_present": 0.9090909090909091,
+    "summary": "Reliability: High (91%). Critical field completeness: 91%. 0 error(s), 0 warning(s). Fields are internally consistent. Extraction is reliable.",
+    "flags": [],
+    "field_reliabilities": [
+      {
+        "field_name": "property_address",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "city",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "state",
+        "original_confidence": "low",
+        "calibrated_confidence": "low",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "zip_code",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "county",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "legal_description",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "assessors_parcel_number",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "appraised_value",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "effective_date_of_appraisal",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "appraisal_purpose",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "appraiser_name",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "appraiser_license_number",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "lender_client",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "gross_living_area_sqft",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "lot_size",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "year_built",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "property_type",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "number_of_bedrooms",
+        "original_confidence": "low",
+        "calibrated_confidence": "low",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "number_of_bathrooms",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "number_of_stories",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "garage_capacity",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "basement",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "condition_rating",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "quality_rating",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "neighborhood_name",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "market_trend",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "prior_sale_price",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "prior_sale_date",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "comp_1_address",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "comp_1_sale_price",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "comp_1_gla",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "comp_2_address",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "comp_2_sale_price",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "comp_2_gla",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "comp_3_address",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "comp_3_sale_price",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      },
+      {
+        "field_name": "comp_3_gla",
+        "original_confidence": "high",
+        "calibrated_confidence": "high",
+        "adjustment_reason": ""
+      }
+    ]
+  },
+  "comp_analysis": {
+    "subject_appraised_value": 485000.0,
+    "subject_gla_sqft": 2150.0,
+    "subject_implied_ppsf": 225.58,
+    "valid_comp_count": 3,
+    "comparables": [
+      {
+        "label": "comp_1",
+        "address": "818 Mulberry Lane, Springfield, IL 62704",
+        "sale_price": 472000.0,
+        "gla_sqft": 2080.0,
+        "price_per_sqft": 226.92
+      },
+      {
+        "label": "comp_2",
+        "address": "1204 Oak Street, Springfield, IL 62704",
+        "sale_price": 498500.0,
+        "gla_sqft": 2210.0,
+        "price_per_sqft": 225.57
+      },
+      {
+        "label": "comp_3",
+        "address": "55 Chestnut Ave, Springfield, IL 62703",
+        "sale_price": 479000.0,
+        "gla_sqft": 2100.0,
+        "price_per_sqft": 228.1
+      }
+    ],
+    "price_per_sqft_analysis": {
+      "comp_mean": 226.86,
+      "comp_std": 1.27,
+      "comp_min": 225.57,
+      "comp_max": 228.1,
+      "subject_vs_mean_pct": -0.0057
+    },
+    "gla_adjustment_analysis": {
+      "estimated_rate_per_sqft": 56.72,
+      "adjusted_value_range": {
+        "low": 475970.0,
+        "high": 495097.0
+      },
+      "appraised_value_in_range": true,
+      "adjustments": [
+        {
+          "comp": "comp_1",
+          "comp_sale_price": 472000.0,
+          "gla_difference_sqft": 70.0,
+          "adjustment": 3970.0,
+          "adjusted_comp_value": 475970.0
+        },
+        {
+          "comp": "comp_2",
+          "comp_sale_price": 498500.0,
+          "gla_difference_sqft": -60.0,
+          "adjustment": -3403.0,
+          "adjusted_comp_value": 495097.0
+        },
+        {
+          "comp": "comp_3",
+          "comp_sale_price": 479000.0,
+          "gla_difference_sqft": 50.0,
+          "adjustment": 2836.0,
+          "adjusted_comp_value": 481836.0
+        }
+      ]
+    },
+    "bracketing": {
+      "is_bracketed": true,
+      "has_comp_above": true,
+      "has_comp_below": true,
+      "message": "Value is properly bracketed by comparable sales."
+    },
+    "comp_quality_score": 0.9966,
+    "comp_quality_label": "Strong",
+    "summary": "Comp selection quality: Strong (100%). Comp $/sqft range: $226–$228 (mean $227). Subject implied $/sqft is 0.6% below comp mean. Appraised value is within GLA-adjusted comp range ($475,970–$495,097). Value is properly bracketed by comparable sales.",
+    "warnings": []
+  }
+}
