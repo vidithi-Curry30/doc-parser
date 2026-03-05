@@ -1,6 +1,6 @@
 # Appraisal Document Parser
 
-An end-to-end pipeline for extracting structured data from mortgage loand and residential property appraisal reports (URAR / UAD 3.6 format). Five distinct processing stages — each designed to catch failure modes the previous one cannot.
+An end-to-end pipeline for extracting structured data from mortgage loans and residential property appraisal reports (URAR / UAD 3.6 format). Five distinct processing stages — each designed to catch failure modes the previous one cannot.
 
 Includes a FastAPI REST API, Click CLI, and async batch processor.
 
