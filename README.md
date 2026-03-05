@@ -100,12 +100,6 @@ ExtractionResponse (Pydantic)
 
 ---
 
-## Extracted Fields
-
-`property_address` · `city` · `state` · `zip_code` · `county` · `legal_description` · `assessors_parcel_number` · `appraised_value` · `effective_date_of_appraisal` · `appraisal_purpose` · `appraiser_name` · `appraiser_license_number` · `lender_client` · `gross_living_area_sqft` · `lot_size` · `year_built` · `property_type` · `number_of_bedrooms` · `number_of_bathrooms` · `number_of_stories` · `garage_capacity` · `basement` · `condition_rating` · `quality_rating` · `neighborhood_name` · `market_trend` · `prior_sale_price` · `prior_sale_date` · `comp_1_address` · `comp_1_sale_price` · `comp_1_gla` · `comp_2_address` · `comp_2_sale_price` · `comp_2_gla` · `comp_3_address` · `comp_3_sale_price` · `comp_3_gla`
-
----
-
 ## Setup
 
 ### Option A: Docker (recommended)
