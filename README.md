@@ -243,10 +243,10 @@ appraisal-doc-parser/
 LLM self-reported confidence is uncalibrated — the model can assign "high" to a hallucinated value. The calibration layer asks a different question: do the extracted fields agree with each other? An appraised value 80% above the comp midpoint is a data quality signal regardless of what the LLM reported. Detected inconsistencies propagate back as confidence downgrades on the affected fields, with severity, affected fields, and a suggested action recorded per flag.
 
 **Why implement comp analysis in code rather than prompting the LLM?**
-AD appraisal methodology — bracketing, GLA adjustments, $/sqft analysis — is quantitative and deterministic. Code is more reliable, auditable, and testable than LLM arithmetic. It also runs entirely on already-extracted fields, adding zero API cost or latency. Re-prompting the LLM with comp-level data post-extraction would require an additional API call for math that a few lines of numpy handle exactly.
+AD appraisal methodology — bracketing, GLA adjustments, $/sqft analysis — is quantitative and deterministic. Code is more reliable and testable than LLM arithmetic. It also runs entirely on already-extracted fields, adding zero API cost or latency. Re-prompting the LLM with comp-level data post-extraction would require an additional API call for math that a few lines of numpy handle exactly.
 
 **Why rule-based numeric validation between LLM extraction and calibration?**
-LLMs can return values that are syntactically valid JSON but semantically impossible — $1 appraised value from "$1 million" spanning a line break, or year_built: 2090 from an OCR artifact. Rules catch these cheaply before they reach the calibrator and corrupt its consistency checks.
+LLMs can return values that are valid JSON but semantically impossible — $1 appraised value from "$1 million" spanning a line break, or year_built: 2090 from an OCR artifact. Rules catch these cheaply before they reach the calibrator and corrupt its consistency checks.
 
 **Why two PDF extraction strategies instead of one?**
-pdfplumber is table-aware and optimized for structured forms like URAR, but fails on certain PDF encodings. PyMuPDF is faster and more broadly compatible but loses table structure. Auto-selecting based on extraction success means you get the best output without manual intervention.
+pdfplumber is table-aware and optimized for structured forms like URAR, but fails on certain PDF encodings. PyMuPDF is faster and more compatible in general but loses table structure. Auto-selecting based on extraction success means you get the best output without manual intervention.
