@@ -137,7 +137,16 @@ ExtractionResponse (Pydantic)
 
 ## Setup
 
-### 1. Clone and install
+### Option A: Docker (recommended)
+
+```bash
+docker build -t appraisal-parser .
+docker run -e OPENAI_API_KEY=sk-... -p 8000:8000 appraisal-parser
+```
+
+API live at `http://localhost:8000` · Swagger UI at `http://localhost:8000/docs`
+
+### Option B: Local
 
 ```bash
 git clone https://github.com/yourusername/appraisal-doc-parser.git
@@ -145,11 +154,6 @@ cd appraisal-doc-parser
 python -m venv env
 source env/bin/activate        # Windows: env\Scripts\activate
 pip install -r requirements.txt
-```
-
-### 2. Configure API key
-
-```bash
 cp .env.example .env
 # Edit .env:
 OPENAI_API_KEY=sk-...
@@ -328,6 +332,7 @@ appraisal-doc-parser/
 │   └── test_calibration_and_comps.py  # 30+ unit tests for calibrator and comp engine (no API calls)
 ├── sample_appraisal.pdf
 ├── sample_output.json
+├── Dockerfile
 ├── .env.example
 ├── requirements.txt
 └── README.md
